@@ -4,36 +4,32 @@
 
 import numpy as np
 import table as tbl
-import utils as utl
 import json
 
-def main(json_number):
-    # 問題をｊｓｏｎで読み込み
-    json_path = './Level_' + str(json_number) + '.json'
-    question = utl.ReadJson(json_path).question
+def main(question):
     answer = np.array(question)
     # ヒントの数字が少な過ぎのとき
     if len(np.where(answer > 0)[0]) < 10:
-        return 'ヒントが少なすぎですよ', answer
+        return "ヒントが少なすぎですよ", answer.tolist()
     main_table = tbl.Table(answer)
     main_table.set_flags()
     ret =  main_table.solve()
     if ret == 0:
-        return 'できましたよ (level-' + str(json_number) + ')', answer
+        return "できましたよ", answer.tolist()
     elif ret == -1:
-        return '問題が間違ってますよ (level-' + str(json_number) + ')', answer
+        return "問題が間違ってますよ", answer.tolist()
     
-    ret = Virtual(answer, main_table.flags, 'more') 
+    ret = Virtual(answer, main_table.flags, "more") 
     if ret[0] == 0:
-        return 'できましたよ (level-' + str(json_number) + ')', ret[1]
+        return "できましたよ", ret[1].tolist()
     else:
-        return '難しくて解けないです (level-' + str(json_number) + ')', 0
+        return "難しくて解けないです", answer.tolist()
 
 
 def Virtual(answer, flags, flg_more):
-    '''
+    """
     仮置きロジック　再帰呼び出しで仮仮までやる
-    '''
+    """
     init_answer = np.copy(answer)
     init_flags  = np.copy(flags)
     v_table = tbl.Table(np.copy(init_answer))
@@ -59,8 +55,8 @@ def Virtual(answer, flags, flg_more):
                                 init_flags[row, col, indexes[0][j]] = 0
 
                             else:   # 仮仮ロジック（再帰呼び出し）
-                                if flg_more == 'more':
-                                    vv_ret = Virtual(v_table.numbers, v_table.flags, ' ') 
+                                if flg_more == "more":
+                                    vv_ret = Virtual(v_table.numbers, v_table.flags, " ") 
                                     if vv_ret[0] == 0:
                                         return vv_ret
 

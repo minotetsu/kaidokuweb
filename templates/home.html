@@ -1,19 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Kaidoku</title>
+<title>数独を解くやつ</title>
+<meta name="Description" content="数独を解くやつ">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">	
+<link href="/static/css/style.css" rel="stylesheet">
 </head>
 <body>
-<h3>{{ ret[0] }}</h3>
-<p>{{ ret[1][0] }}</p>
-<p>{{ ret[1][1] }}</p>
-<p>{{ ret[1][2] }}</p>
-<p>{{ ret[1][3] }}</p>
-<p>{{ ret[1][4] }}</p>
-<p>{{ ret[1][5] }}</p>
-<p>{{ ret[1][6] }}</p>
-<p>{{ ret[1][7] }}</p>
-<p>{{ ret[1][8] }}</p>
+    <div id="Header">
+        <h1>数独を解くやつ</h1>
+    </div>
+    <div id="status">問題を入力してください。</div>
+    <div id="numberTable">
+        <table class="numberTable_table">
+            {% for i in range(9) %}
+            <tr>
+                {% for j in range(9) %}
+                <td class="numberTable_tableItem"></td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br/>
+    <div id="selectTable">
+        <table class="selectTable_table">
+            <tr>
+                {% for i in range(1, 10) %}
+                <td class="selectTable_tableItem">{{ i }}</td>
+                {% endfor %}
+                <td class="selectTable_tableItem">消</td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    <div id="buttons">
+        <input type="button" id="toku_button" value="解く"/>
+        <input type="button" id="clear_button" value="クリアする"/>
+        <input type="button" id="sample_button" value="問題サンプル（世界一）"/>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/static/js/script.js"></script>
 </body>
 </html>

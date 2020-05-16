@@ -1,0 +1,52 @@
+@charset "UTF-8";
+html {
+	font-size: 20px; }
+
+body {
+  	background-color: #e6e6e6;
+  	font-family: Verdana, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  	margin: 50px; }
+
+.numberTable_table {
+	border-collapse: collapse;
+}
+.numberTable_tableItem {
+	height: 25px;
+	width:  25px;
+	border: 2px solid #333;
+	text-align: center;
+	color: blue;
+	background-color: #ffffff;
+	cursor: pointer;
+}
+.numberTable_tableItem:hover {
+	opacity:0.3
+}
+/* 3マス毎に線を太くするやつ */
+.numberTable_table tr:nth-child(1) td{
+	border-top-width: 4px;
+}
+.numberTable_table tr:nth-child(3n) td{
+	border-bottom-width: 4px;
+}
+.numberTable_table tr td:nth-child(1){
+	border-left-width: 4px;
+}
+.numberTable_table tr td:nth-child(3n){
+	border-right-width: 4px;
+}
+
+.selectTable_table {
+	border-spacing: 1;
+}
+.selectTable_tableItem {
+	height: 25px;
+	width:  25px;
+	border: 1px solid #333;
+	text-align: center;
+	background-color: #ffffff;
+	cursor: pointer;
+}
+.selectTable_tableItem:hover {
+	opacity:0.3
+}
